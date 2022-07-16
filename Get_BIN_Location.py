@@ -49,7 +49,7 @@ def get_bin_location(bin):
     connection = mysql.connector.connect(host='localhost',
                                         database='WAREHOUSE',
                                         user='root',
-                                        password='Smm91Dj92')
+                                        password='xxxx')
 
     sql_select_Query = "select St_X(LocationX), St_Y (LocationX),  St_X(LocationY), St_Y (LocationY) from BINLOCATION WHERE BIN_Number = '%s'" % bin 
     
