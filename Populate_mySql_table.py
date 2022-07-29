@@ -20,7 +20,7 @@ def insert_varibles(binnum,product,locationX, locationY):
 
     
     mySql_insert_query = """    INSERT INTO BINLOCATION (BIN_Number, Product, LocationX, LocationY) 
-                                VALUES (%s, %s, ST_ASTEXT(ST_GeomFromText(%s),  ST_GeomFromText(%s)) """
+                                VALUES (%s, %s, ST_GeomFromText(%s),  ST_GeomFromText(%s))"""
 
     record = (binnum,product,locationX, locationY)
     cursor.execute(mySql_insert_query, record)
@@ -52,11 +52,12 @@ for i in range(n_boxes):
        
         (x, y, w, h) = (d['left'][i], d['top'][i], d['width'][i], d['height'][i])
   
-        coordinates = '´%s %s' % (x, y) #(x+w, y+h)
-        width_heigth = '%s %s' % (x+w, y+h)
+        coordinates = 'POINT(%s %s)' % (x, y) #(x+w, y+h)
+        width_heigth = 'POINT(%s %s)' % (x+w, y+h)
                 
         #Check format of BIN Number
         text = d['text'][i]
         if re.findall("O|Q", text[1]):
             text = text[0:1] + str(0) + text[1+1: ]
         text = (re.sub(lowercase, "", text))
+        insert_varibles(text,"Dog food",coordinates,width_heigth)
