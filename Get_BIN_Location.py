@@ -12,7 +12,7 @@ import urllib.request
 from urllib.parse import urlparse
 
 #Fake url to input BINNumber
-u= urlparse('//www.cwi.nl:80/%7Eguido/Python.html?binlocation=<A01C11>')
+u= urlparse('https://example.org/warehouse/?binlocation=<A01C11>')
 
 #To take from a url 
 
